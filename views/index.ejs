@@ -10,19 +10,18 @@
   </head>
   <body>
     <h1>Bitcoin Price App</h1>
-    <input type="radio" id="html" name="fav_language" value="HTML" />
-    <label for="html">USD</label><br />
-    <input type="radio" id="css" name="fav_language" value="CSS" />
-    <label for="css">GBP</label><br />
-    <input
-      type="radio"
-      id="javascript"
-      name="fav_language"
-      value="JavaScript"
-    />
-    <label for="javascript">EUR</label>
-    <form action="/getimage" method="get">
+    <form>
+      <input type="radio" name="bitcoinPrice" checked value="USD" />
+      <label for="html">USD</label><br />
+      <input type="radio" name="bitcoinPrice" value="GBP" />
+      <label for="css">GBP</label><br />
+      <input type="radio" name="bitcoinPrice" value="EUR" />
+      <label for="javascript">EUR</label>
+    </form>
+    <form action="/getdata" method="get">
       <button type="submit">Get Price</button>
+      <h3>The Current Price of Bitcoin in [Insert Currency is]</h3>
+      <h2>$5000</h2>
     </form>
   </body>
 </html>

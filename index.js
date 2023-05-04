@@ -12,14 +12,35 @@ const port = process.env.PORT || 3000;
 app.use(express.static("public"));
 
 //API Variabes
-const baseURL = " ";
+// let endpoint = "https://api.coindesk.com/v1/bpi/currentprice.json"
 
 //ROUTING
 //Redirect from base url to /home url
 app.get("/", (req, res) => res.redirect("/home"));
 
 //Connect home.ejs to website
-app.get("/home", (req, res) => res.render("index.ejs"));
+app.get("/home", (req, res) => {
+  console.log(req.query);
+  let endpoint = "https://api.coindesk.com/v1/bpi/currentprice.json";
+  fetch(endpoint)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw Error("API Data Error");
+      }
+    })
+    .then((parsedData) => {
+      console.log(req);
+      console.log(parsedData);
+      req.res.render("index.ejs");
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send("index.ejs");
+    });
+  console.log(req.query);
+});
 
 //Catchall redirect
 app.get("/*", (req, res) => res.redirect("/home"));
