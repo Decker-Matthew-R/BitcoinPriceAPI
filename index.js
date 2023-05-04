@@ -31,20 +31,32 @@ app.get("/home", (req, res) => {
       }
     })
     .then((parsedData) => {
-      console.log(req);
       console.log(parsedData);
-      req.res.render("index.ejs");
+      const { code, symbol, rate } = parsedData.bpi[req.query.bitcoinPrice];
+      console.log(req);
+      res.render("index.ejs", { data: code, symbol, rate });
     })
     .catch((err) => {
       console.log(err);
-      res.send("index.ejs");
     });
-  console.log(req.query);
 });
 
+// app.get("/home", (req, res) => {
+//   console.log(req.parsedData);
+//   res.render("home.ejs", { data: parsedData.USD });
+// });
+
 //Catchall redirect
-app.get("/*", (req, res) => res.redirect("/home"));
+// app.get("/*", (req, res) => res.redirect("/home"));
 
 app.listen(port, () => console.log(`Bitcoing Project on ${port}`));
 
 app.use(express.static("public"));
+
+// <!-- <h3>The Current Price of Bitcoin in <%= data.USD.code %>:</h3>
+// <h2><%- data.USD.symbol%><%= ` ${data.USD.rate}` %></h2>
+// <% if (bitcoinPrice === USD) { %>
+//   <p><%= `The Current Price of Bitcoin in ${data.USD.code}}`</p>
+//   <p><$- data.USD.symbol %><%= ` ${data.USD.rate}` %></p>
+// <% } else { %>
+//   <p><%= data.GBP.symbol %></p> -->

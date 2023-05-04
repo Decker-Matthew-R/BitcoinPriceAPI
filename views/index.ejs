@@ -17,11 +17,10 @@
       <label for="css">GBP</label><br />
       <input type="radio" name="bitcoinPrice" value="EUR" />
       <label for="javascript">EUR</label>
-    </form>
-    <form action="/getdata" method="get">
       <button type="submit">Get Price</button>
-      <h3>The Current Price of Bitcoin in [Insert Currency is]</h3>
-      <h2>$5000</h2>
     </form>
+
+    <h3>The Current Price of Bitcoin in <%=code%></h3>
+    <h2><%-symbol %> <%=` ${rate}` %></h2>
   </body>
 </html>
