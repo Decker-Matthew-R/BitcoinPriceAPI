@@ -3,6 +3,8 @@ html {
 }
 
 button {
+ 
+  position: center;
   background-color: whitesmoke;
   border-color: black;
   color: black;
@@ -16,6 +18,15 @@ button {
   cursor: pointer;
   border-radius: 12px;
 }
+
 button:hover {
   background-color: slategray;
+}
+
+body{
+  text-align: center;
+}
+
+footer{
+  font-size: 15px;
 }

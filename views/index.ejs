@@ -1,26 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bitcoin Prices</title>
-    <link rel="icon" type="image/x-icon" href="/images/bitcoin.gif" />
-    <link rel="stylesheet" href="/styles.css" />
-  </head>
-  <body>
-    <h1>Bitcoin Price App</h1>
-    <form>
-      <input type="radio" name="bitcoinPrice" checked value="USD" />
-      <label for="html">USD</label><br />
+<%- include("partialViews/header.ejs") %>
+    <form action="/bitcoinPrice" method="get">
+      <input type="radio" name="bitcoinPrice" value="USD" checked />
+      <label for="USDollar">USD</label><br />
       <input type="radio" name="bitcoinPrice" value="GBP" />
-      <label for="css">GBP</label><br />
+      <label for="Pounds">GBP</label><br />
       <input type="radio" name="bitcoinPrice" value="EUR" />
-      <label for="javascript">EUR</label>
+      <label for="Euros">EUR</label>
+      <br>
       <button type="submit">Get Price</button>
     </form>
 
-    <h3>The Current Price of Bitcoin in <%=code%></h3>
-    <h2><%-symbol %> <%=` ${rate}` %></h2>
-  </body>
-</html>
+    <h3><%= `The Current Price of Bitcoin in ${code}:` %></h3>
+    <h2><%-symbol %> <%=` ${newRate}` %></h2>
+ 
+    <%- include("partialViews/footer.ejs") %>
